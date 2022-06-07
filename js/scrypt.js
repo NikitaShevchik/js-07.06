@@ -74,40 +74,117 @@
 //     })
 
 
-const person = Object.create({
-    calculateAge() {
-        console.log('Age: ', new Date().getFullYear() - this.birthYear)
-    }
-}, {
-    name: {
-        value: 'Nikita',
-        enumerable: true,
-        writable: true,
-        configurable: true
-    },
-    birthYear: {
-        value: 2000,
-        enumerable: false
-    },
-    age: {
-        get() {
-            return new Date().getFullYear() - this.birthYear
-        },
-        set(value) {
-            document.body.style.background = 'red'
-            console.log('Set age', value)
-        }
-    }
-})
 
-// const person = {
-//     name: 'Nik',
-//     age: 22
+
+
+
+
+
+
+
+
+// const person = Object.create({
+//     calculateAge() {
+//         console.log('Age: ', new Date().getFullYear() - this.birthYear)
+//     }
+// }, {
+//     name: {
+//         value: 'Nikita',
+//         enumerable: true,
+//         writable: true,
+//         configurable: true
+//     },
+//     birthYear: {
+//         value: 2000,
+//         enumerable: false
+//     },
+//     age: {
+//         get() {
+//             return new Date().getFullYear() - this.birthYear
+//         },
+//         set(value) {
+//             document.body.style.background = 'red'
+//             console.log('Set age', value)
+//         }
+//     }
+// })
+
+// // const person = {
+// //     name: 'Nik',
+// //     age: 22
+// // }
+// // person.name = 'Ivan'
+
+// for (let key in person) {
+//     if (person.hasOwnProperty(key)) {
+//         console.log('Key:', key, person[key])
+//     }
 // }
-// person.name = 'Ivan'
 
-for (let key in person) {
-    if (person.hasOwnProperty(key)) {
-        console.log('Key:', key, person[key])
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const animal = {
+//     name: 'Jhon',
+//     age: 3,
+//     hasTail: true
+// }
+
+class Animal {
+    static type = 'ANIMAL'
+
+    constructor(options) {
+        this.name = options.name
+        this.age = options.age
+        this.hasTail = options.hasTail
+    }
+
+    voice() {
+        console.log('I am Animal')
     }
 }
+
+// const animal = new Animal({
+//     name: 'Jhon',
+//     age: 3,
+//     hasTail: true
+// })
+
+class Dog extends Animal {
+    static type = 'DOG'
+
+    constructor(options) {
+        super(options)
+        this.color = options.color
+    }
+
+    voice() {
+        super.voice()
+        console.log('I am dog')
+    }
+
+    get ageInfo() {
+        return this.age * 7
+    }
+
+    set ageInfo(newAge) {
+        this.age = newAge
+    }
+}
+
+const dog = new Dog({
+    name: 'Graph',
+    age: 5,
+    hasTail: true,
+    color: 'White'
+})
